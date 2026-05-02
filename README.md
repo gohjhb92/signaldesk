@@ -8,7 +8,7 @@ The app ships with a public demo mode, so it works immediately without Supabase,
 credentials. The demo dataset includes 18 analysts, 23 sources, 6 trade theses, and 30 sample market
 updates across crypto, equities, ETFs, macro, commodities, and policy.
 
-**Live demo:** [https://signaldesk-market-intel.vercel.app](https://signaldesk-market-intel.vercel.app)
+**Live demo:** [https://signaldesk-gohjhbcem-5280s-projects.vercel.app](https://signaldesk-gohjhbcem-5280s-projects.vercel.app)
 
 ## Why It Is Useful
 
