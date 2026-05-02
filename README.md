@@ -8,6 +8,8 @@ The app ships with a public demo mode, so it works immediately without Supabase,
 credentials. The demo dataset includes 18 analysts, 23 sources, 6 trade theses, and 30 sample market
 updates across crypto, equities, ETFs, macro, commodities, and policy.
 
+**Live demo:** [https://signaldesk-market-intel.vercel.app](https://signaldesk-market-intel.vercel.app)
+
 ## Why It Is Useful
 
 Traders rarely need more feeds. They need a cleaner way to answer:
@@ -117,19 +119,27 @@ SignalDesk
 
 ## Screenshots
 
-Screenshot placeholders live in:
+### Dashboard
+
+![SignalDesk dashboard](docs/screenshots/dashboard.png)
+
+### Trade Theses
+
+![SignalDesk trade theses](docs/screenshots/theses.png)
+
+### Semantic Search
+
+![SignalDesk search](docs/screenshots/search.png)
+
+### Sources
+
+![SignalDesk sources](docs/screenshots/sources.png)
+
+Screenshot assets live in:
 
 ```txt
 docs/screenshots/
 ```
-
-Suggested capture set before publishing:
-
-- `dashboard.png`
-- `filters.png`
-- `search.png`
-- `sources.png`
-- `alerts.png`
 - `item-detail.png`
 
 ## Local Setup

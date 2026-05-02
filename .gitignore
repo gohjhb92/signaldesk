@@ -8,3 +8,5 @@ coverage
 *.tsbuildinfo
 
 .vercel
+.chrome-shot-*
+.edge-shot-profile
