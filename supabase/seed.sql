@@ -1,0 +1,222 @@
+insert into public.analysts (id, name, category, priority, notes, website, x_handle)
+values
+  ('11111111-1111-1111-1111-111111111111', 'Lyn Alden', 'researcher', 'high', 'Macro liquidity, Bitcoin, rates, and long-cycle market structure.', 'https://www.lynalden.com', '@LynAldenContact'),
+  ('22222222-2222-2222-2222-222222222222', 'Jurrien Timmer', 'analyst', 'medium', 'Equity cycles, valuation, Bitcoin adoption curves, and macro regime shifts.', 'https://www.fidelity.com', '@TimmerFidelity'),
+  ('33333333-3333-3333-3333-333333333333', 'Arthur Hayes', 'investor', 'high', 'Crypto liquidity, policy, leverage, and risk appetite.', 'https://cryptohayes.medium.com', '@CryptoHayes'),
+  ('44444444-4444-4444-4444-444444444444', 'The Compound', 'podcaster', 'medium', 'Markets, allocation, ETFs, and investor positioning.', 'https://www.youtube.com/@TheCompoundRWM', '@TheCompoundNews'),
+  ('55555555-5555-5555-5555-555555555555', 'Koyfin Research', 'researcher', 'low', 'Market dashboards, sector performance, ETF trends, and macro charts.', 'https://www.koyfin.com', '@KoyfinCharts'),
+  ('66666666-6666-6666-6666-666666666666', 'Preston Pysh', 'podcaster', 'medium', 'Bitcoin, macro, credit cycles, and long-form investor interviews.', 'https://www.theinvestorspodcast.com', '@PrestonPysh'),
+  ('77777777-7777-7777-7777-777777777777', 'Liz Ann Sonders', 'strategist', 'medium', 'US equities, market breadth, sentiment, and economic cycle data.', 'https://www.schwab.com', '@LizAnnSonders'),
+  ('88888888-8888-8888-8888-888888888888', 'Kobeissi Letter', 'researcher', 'high', 'Macro headlines, rates, oil, inflation, and policy catalysts.', 'https://www.thekobeissiletter.com', '@KobeissiLetter'),
+  ('99999999-9999-9999-9999-999999999999', 'ETF Institute', 'analyst', 'medium', 'ETF flows, sector rotations, fund launches, and allocation trends.', 'https://example.com/etf-institute', '@ETFInstitute'),
+  ('10101010-1010-1010-1010-101010101010', 'Metals Desk', 'trader', 'low', 'Gold, silver, copper, miners, and commodity momentum.', 'https://example.com/metals-desk', '@MetalsDesk'),
+  ('12121212-1212-1212-1212-121212121212', 'Campbell Ramble', 'researcher', 'medium', 'AI-assisted market research source for cross-asset themes and trade ideas.', 'https://www.campbellramble.ai/', null),
+  ('13131313-1313-1313-1313-131313131313', 'Santiago Capital', 'investor', 'high', 'Macro, dollar, gold, commodities, and global liquidity framework.', 'https://santiagocapital.com/about/', null),
+  ('14141414-1414-1414-1414-141414141414', 'CryptoUB', 'trader', 'medium', 'Crypto and TradFi technical analysis, charts, and trade education.', 'https://x.com/CryptoUB', '@CryptoUB'),
+  ('15151515-1515-1515-1515-151515151515', 'Pierre', 'trader', 'medium', 'Crypto charting and technical market structure commentary.', 'https://x.com/pierre_crypt0', '@pierre_crypt0'),
+  ('16161616-1616-1616-1616-161616161616', 'LSDinmycoffee', 'trader', 'medium', 'Crypto trading education, market structure, and tactical setups.', 'https://x.com/LSDinmycoffee', '@LSDinmycoffee'),
+  ('17171717-1717-1717-1717-171717171717', 'LomahCrypto', 'trader', 'medium', 'Crypto technical analysis, charts, and swing-trading context.', 'https://x.com/LomahCrypto', '@LomahCrypto'),
+  ('18181818-1818-1818-1818-181818181818', 'ColdBloodShill', 'trader', 'medium', 'Trading education, psychology, charts, and crypto market commentary.', 'https://x.com/ColdBloodShill', '@ColdBloodShill'),
+  ('19191919-1919-1919-1919-191919191919', 'TraderMayne', 'trader', 'medium', 'Crypto and TradFi technical analysis, education, and chart commentary.', 'https://x.com/Tradermayne', '@Tradermayne')
+on conflict (id) do update set
+  name = excluded.name,
+  category = excluded.category,
+  priority = excluded.priority,
+  notes = excluded.notes,
+  website = excluded.website,
+  x_handle = excluded.x_handle;
+
+insert into public.sources (id, analyst_id, source_type, source_url, active)
+values
+  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '11111111-1111-1111-1111-111111111111', 'blog', 'https://www.lynalden.com/feed/', true),
+  ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa2', '11111111-1111-1111-1111-111111111111', 'report', 'https://example.com/lyn/reports', false),
+  ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb1', '22222222-2222-2222-2222-222222222222', 'rss', 'https://example.com/fidelity-insights/rss', true),
+  ('cccccccc-cccc-cccc-cccc-ccccccccccc1', '33333333-3333-3333-3333-333333333333', 'blog', 'https://cryptohayes.medium.com/feed', true),
+  ('dddddddd-dddd-dddd-dddd-ddddddddddd1', '44444444-4444-4444-4444-444444444444', 'youtube', 'https://www.youtube.com/feeds/videos.xml?channel_id=UCY2ifv8iH1Dsgjrz-h3lWLQ', true),
+  ('dddddddd-dddd-dddd-dddd-ddddddddddd2', '44444444-4444-4444-4444-444444444444', 'podcast', 'https://example.com/the-compound/podcast.xml', true),
+  ('eeeeeeee-eeee-eeee-eeee-eeeeeeeeeee1', '55555555-5555-5555-5555-555555555555', 'substack', 'https://example.substack.com/feed', true),
+  ('ffffffff-ffff-ffff-ffff-fffffffffff1', '66666666-6666-6666-6666-666666666666', 'podcast', 'https://example.com/tip-bitcoin/rss', true),
+  ('77777777-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '77777777-7777-7777-7777-777777777777', 'rss', 'https://example.com/schwab/market-commentary/rss', true),
+  ('88888888-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '88888888-8888-8888-8888-888888888888', 'rss', 'https://example.com/kobeissi/rss', true),
+  ('88888888-aaaa-aaaa-aaaa-aaaaaaaaaaa2', '88888888-8888-8888-8888-888888888888', 'x_manual', 'https://x.com/KobeissiLetter', false),
+  ('99999999-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '99999999-9999-9999-9999-999999999999', 'blog', 'https://example.com/etf-institute/feed', true),
+  ('99999999-aaaa-aaaa-aaaa-aaaaaaaaaaa2', '99999999-9999-9999-9999-999999999999', 'report', 'https://example.com/etf-institute/reports', false),
+  ('10101010-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '10101010-1010-1010-1010-101010101010', 'blog', 'https://example.com/metals-desk/feed', true),
+  ('10101010-aaaa-aaaa-aaaa-aaaaaaaaaaa2', '10101010-1010-1010-1010-101010101010', 'youtube', 'https://example.com/metals-desk/youtube.xml', true),
+  ('12121212-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '12121212-1212-1212-1212-121212121212', 'blog', 'https://www.campbellramble.ai/', true),
+  ('13131313-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '13131313-1313-1313-1313-131313131313', 'blog', 'https://santiagocapital.com/about/', true),
+  ('14141414-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '14141414-1414-1414-1414-141414141414', 'x_manual', 'https://x.com/CryptoUB', false),
+  ('15151515-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '15151515-1515-1515-1515-151515151515', 'x_manual', 'https://x.com/pierre_crypt0', false),
+  ('16161616-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '16161616-1616-1616-1616-161616161616', 'x_manual', 'https://x.com/LSDinmycoffee', false),
+  ('17171717-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '17171717-1717-1717-1717-171717171717', 'x_manual', 'https://x.com/LomahCrypto', false),
+  ('18181818-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '18181818-1818-1818-1818-181818181818', 'x_manual', 'https://x.com/ColdBloodShill', false),
+  ('19191919-aaaa-aaaa-aaaa-aaaaaaaaaaa1', '19191919-1919-1919-1919-191919191919', 'x_manual', 'https://x.com/Tradermayne', false)
+on conflict (id) do update set
+  analyst_id = excluded.analyst_id,
+  source_type = excluded.source_type,
+  source_url = excluded.source_url,
+  active = excluded.active;
+
+insert into public.content_items
+  (analyst_id, source_id, title, url, source_type, published_at, raw_text, summary, why_it_matters, sentiment, importance_score, assets, themes)
+values
+  ('11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Global liquidity impulse is turning constructive for scarce assets', 'https://example.com/signaldemo/liquidity-btc', 'blog', '2026-05-02 08:40:00+08', 'Liquidity conditions are improving.', 'Improving dollar liquidity and easing financial stress could support Bitcoin and gold while equity upside depends on earnings breadth.', 'Liquidity is one of the main cross-asset drivers for crypto and gold.', 'bullish', 9.2, array['BTC','GOLD','SPX'], array['liquidity','macro','risk appetite']),
+  ('22222222-2222-2222-2222-222222222222', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb1', 'Duration risk remains the pressure point for broad equity beta', 'https://example.com/signaldemo/rates-duration', 'rss', '2026-05-01 17:15:00+08', 'Real yields remain important.', 'Multiples remain sensitive to real yields, but market internals are healthier than the headline index implies.', 'Duration pressure can drive QQQ and SPY positioning.', 'mixed', 7.8, array['QQQ','SPY','TLT'], array['rates','equities','valuation']),
+  ('33333333-3333-3333-3333-333333333333', 'cccccccc-cccc-cccc-cccc-ccccccccccc1', 'Crypto positioning is improving, but leverage is still clustered', 'https://example.com/signaldemo/crypto-leverage', 'blog', '2026-04-30 21:05:00+08', 'Leverage is still clustered.', 'Crypto upside is framed as a liquidity trade with near-term risk from crowded perpetual futures positioning.', 'Crowded leverage can turn a good setup into a liquidation event.', 'bullish', 8.8, array['BTC','ETH','SOL'], array['crypto','leverage','positioning']),
+  ('88888888-8888-8888-8888-888888888888', '88888888-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Oil volatility is feeding back into inflation expectations', 'https://example.com/signaldemo/oil-dollar', 'rss', '2026-04-29 09:20:00+08', 'Oil is volatile.', 'Crude volatility may push inflation expectations higher and complicate the timing of policy easing.', 'Oil can quickly reprice inflation and rates expectations.', 'bearish', 8.3, array['USO','DXY','TLT'], array['commodities','inflation','central banks']),
+  ('99999999-9999-9999-9999-999999999999', '99999999-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Bitcoin ETF flows are stabilizing after a two-week risk reset', 'https://example.com/signaldemo/etf-flows', 'blog', '2026-05-02 12:10:00+08', 'ETF flows stabilized.', 'Spot Bitcoin ETF flows are no longer deteriorating, reducing one pressure point for crypto beta.', 'ETF flows are a direct demand signal for BTC.', 'neutral', 6.4, array['BTC','IBIT','ETH'], array['ETF flows','risk appetite','crypto']),
+  ('55555555-5555-5555-5555-555555555555', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeee1', 'AI earnings revisions continue to dominate index leadership', 'https://example.com/signaldemo/ai-earnings', 'substack', '2026-04-28 14:30:00+08', 'AI earnings are strong.', 'AI-linked mega caps still carry earnings momentum while broader cyclicals remain less convincing.', 'The index can stay bid while AI revisions hold up.', 'bullish', 6.7, array['NVDA','QQQ','SPX'], array['earnings','AI','market breadth']),
+  ('88888888-8888-8888-8888-888888888888', '88888888-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Fed speakers keep optionality open before the next CPI print', 'https://example.com/signaldemo/fed-path', 'rss', '2026-05-02 10:45:00+08', 'Fed optionality remains.', 'Policy comments suggest the Fed wants more inflation evidence before validating rate-cut expectations.', 'Fed tone can move rates, dollar, and equity multiples.', 'mixed', 8.6, array['DXY','TLT','SPX'], array['Fed','inflation','rates']),
+  ('10101010-1010-1010-1010-101010101010', '10101010-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Gold consolidates near breakout levels as real yields stall', 'https://example.com/signaldemo/gold-breakout', 'blog', '2026-05-02 07:25:00+08', 'Gold is consolidating.', 'Gold momentum remains constructive while real yields fail to extend higher.', 'A gold breakout can confirm lower real-rate pressure.', 'bullish', 7.2, array['GOLD','GLD','DXY'], array['breakout','real yields','commodities']),
+  ('77777777-7777-7777-7777-777777777777', '77777777-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Small caps need credit spreads to stay calm', 'https://example.com/signaldemo/small-caps', 'rss', '2026-04-27 16:40:00+08', 'Credit is key for small caps.', 'Small-cap participation depends on stable credit and improving earnings breadth.', 'IWM needs calm credit to sustain upside.', 'neutral', 5.8, array['IWM','SPX','HYG'], array['credit','market breadth','cyclicals']),
+  ('66666666-6666-6666-6666-666666666666', 'ffffffff-ffff-ffff-ffff-fffffffffff1', 'Ethereum staking flows improve ahead of protocol catalyst', 'https://example.com/signaldemo/eth-upgrade', 'podcast', '2026-04-26 22:00:00+08', 'ETH staking improved.', 'ETH staking and L2 activity are improving, but the market still needs a clearer ETF-flow impulse.', 'ETH needs both fundamentals and flows to outperform.', 'mixed', 6.2, array['ETH','BTC'], array['staking','ETF flows','crypto']),
+  ('88888888-8888-8888-8888-888888888888', '88888888-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Recession risk is low but not gone as claims drift higher', 'https://example.com/signaldemo/recession-watch', 'rss', '2026-04-26 08:15:00+08', 'Claims are drifting higher.', 'Labor data is not flashing red, but claims trends deserve monitoring for equity risk.', 'Labor deterioration can hit cyclical risk quickly.', 'neutral', 7.6, array['SPX','DXY','TLT'], array['recession','labor market','macro']),
+  ('10101010-1010-1010-1010-101010101010', '10101010-aaaa-aaaa-aaaa-aaaaaaaaaaa2', 'Copper demand narrative improves on grid and AI power capex', 'https://example.com/signaldemo/copper-demand', 'youtube', '2026-04-25 11:05:00+08', 'Copper demand is tied to power capex.', 'Copper bulls are leaning on power infrastructure and AI data-center demand.', 'Copper can confirm the real-economy side of the AI capex story.', 'bullish', 6.1, array['COPPER','FCX'], array['commodities','AI','infrastructure']),
+  ('55555555-5555-5555-5555-555555555555', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeee1', 'QQQ holds key support despite higher rate volatility', 'https://example.com/signaldemo/qqq-levels', 'substack', '2026-04-24 15:30:00+08', 'QQQ support is holding.', 'Large-cap tech remains technically resilient, but leadership is concentrated.', 'Concentrated leadership can be profitable but fragile.', 'mixed', 5.9, array['QQQ','NVDA','MSFT'], array['technical levels','rates','market breadth']),
+  ('88888888-8888-8888-8888-888888888888', '88888888-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Oil supply risk returns as inventories tighten', 'https://example.com/signaldemo/oil-supply', 'rss', '2026-04-24 09:35:00+08', 'Oil inventories tightened.', 'Inventory draws and geopolitical risk are lifting the oil risk premium.', 'Higher oil can pressure inflation and consumer sentiment.', 'bearish', 8.2, array['OIL','USO','XLE'], array['oil','inflation','geopolitics']),
+  ('66666666-6666-6666-6666-666666666666', 'ffffffff-ffff-ffff-ffff-fffffffffff1', 'Bitcoin remains range-bound while volatility compresses', 'https://example.com/signaldemo/btc-range', 'podcast', '2026-04-23 18:10:00+08', 'BTC volatility compressed.', 'BTC volatility compression suggests a larger move is building, but direction remains unresolved.', 'Compression often precedes tradable expansion.', 'mixed', 6.8, array['BTC','IBIT'], array['volatility','breakout','crypto']),
+  ('11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Bank credit growth is no longer a clear headwind', 'https://example.com/signaldemo/bank-credit', 'blog', '2026-04-22 13:50:00+08', 'Credit growth stabilized.', 'Credit growth stabilization supports the soft-landing narrative and risk assets.', 'Credit is an important confirmation signal for risk appetite.', 'bullish', 8.4, array['SPX','BTC','HYG'], array['credit','liquidity','soft landing']),
+  ('77777777-7777-7777-7777-777777777777', '77777777-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Earnings revisions broaden outside mega-cap tech', 'https://example.com/signaldemo/earnings-revisions', 'rss', '2026-04-21 10:10:00+08', 'Earnings breadth improved.', 'Broader earnings revisions would make the equity rally less fragile.', 'Breadth reduces index concentration risk.', 'bullish', 7.4, array['SPX','IWM','QQQ'], array['earnings','market breadth','equities']),
+  ('55555555-5555-5555-5555-555555555555', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeee1', 'Dollar strength is pressuring commodities and EM risk', 'https://example.com/signaldemo/dxy-pressure', 'substack', '2026-04-20 12:00:00+08', 'Dollar strength continues.', 'A firm dollar is tightening conditions for commodities and emerging market assets.', 'DXY strength can cap risk assets and commodities.', 'bearish', 6.3, array['DXY','GOLD','EEM'], array['DXY','macro','risk appetite']),
+  ('33333333-3333-3333-3333-333333333333', 'cccccccc-cccc-cccc-cccc-ccccccccccc1', 'Solana activity rebounds but fee quality is uneven', 'https://example.com/signaldemo/sol-activity', 'blog', '2026-04-19 20:45:00+08', 'SOL activity rebounded.', 'SOL activity is rebounding, though the quality and durability of fee growth remain debated.', 'SOL needs durable activity to justify multiple expansion.', 'mixed', 7.9, array['SOL','ETH'], array['crypto','fees','risk appetite']),
+  ('10101010-1010-1010-1010-101010101010', '10101010-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Gold miners lag bullion despite improving margins', 'https://example.com/signaldemo/miners', 'blog', '2026-04-18 09:15:00+08', 'Miners lag bullion.', 'Miner underperformance may offer catch-up potential if gold stays firm.', 'Miner lag can become a rotation trade.', 'bullish', 5.5, array['GDX','GOLD'], array['commodities','miners','valuation']),
+  ('99999999-9999-9999-9999-999999999999', '99999999-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'ETF flows rotate toward defensives after hot inflation data', 'https://example.com/signaldemo/etf-sector', 'blog', '2026-04-17 16:25:00+08', 'Defensive ETF flows improved.', 'Sector ETF flows show investors adding defensives after inflation surprised higher.', 'Defensive flows can signal de-risking.', 'bearish', 6.6, array['XLU','XLP','SPY'], array['ETF flows','inflation','sector rotation']),
+  ('33333333-3333-3333-3333-333333333333', 'cccccccc-cccc-cccc-cccc-ccccccccccc1', 'Crypto regulation headline risk rises into summer', 'https://example.com/signaldemo/regulation-crypto', 'blog', '2026-04-16 23:10:00+08', 'Regulatory risk is rising.', 'Policy uncertainty may create volatility even if the medium-term liquidity setup is positive.', 'Regulation can override constructive liquidity in the short run.', 'bearish', 8.1, array['BTC','ETH','COIN'], array['regulation','crypto','volatility']),
+  ('22222222-2222-2222-2222-222222222222', 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbb1', 'Treasury auction demand improves at the long end', 'https://example.com/signaldemo/treasury-auction', 'rss', '2026-04-15 14:55:00+08', 'Auction demand improved.', 'Better long-end demand could ease pressure on duration-sensitive equities.', 'Auction demand can calm rate volatility.', 'bullish', 6.9, array['TLT','QQQ','SPX'], array['rates','treasury','duration']),
+  ('44444444-4444-4444-4444-444444444444', 'dddddddd-dddd-dddd-dddd-ddddddddddd2', 'Crash-risk hedges are cheap but catalysts are unclear', 'https://example.com/signaldemo/crash-risk', 'podcast', '2026-04-14 17:30:00+08', 'Tail hedges are cheaper.', 'Options pricing is not demanding much tail risk, but the catalyst set remains ambiguous.', 'Cheap hedges matter when positioning is crowded.', 'neutral', 5.7, array['VIX','SPY','QQQ'], array['crash','volatility','hedging']),
+  ('55555555-5555-5555-5555-555555555555', 'eeeeeeee-eeee-eeee-eeee-eeeeeeeeeee1', 'China stimulus hopes lift copper and EM sentiment', 'https://example.com/signaldemo/china-stimulus', 'substack', '2026-04-13 08:50:00+08', 'China stimulus hopes improved.', 'Stimulus expectations are supporting copper and emerging markets, but confirmation is needed.', 'China policy can move commodities and EM beta.', 'bullish', 6.0, array['COPPER','EEM','FXI'], array['China','stimulus','commodities']),
+  ('66666666-6666-6666-6666-666666666666', 'ffffffff-ffff-ffff-ffff-fffffffffff1', 'Bitcoin miners face margin pressure after hashprice reset', 'https://example.com/signaldemo/btc-miners', 'podcast', '2026-04-12 19:45:00+08', 'Miner economics tightened.', 'Miner economics are tightening, which may affect forced selling and equity beta.', 'Miner stress can feed BTC and crypto-equity volatility.', 'mixed', 6.5, array['BTC','MARA','RIOT'], array['crypto','miners','hashprice']),
+  ('77777777-7777-7777-7777-777777777777', '77777777-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Consumer stress is showing up in lower-end retail', 'https://example.com/signaldemo/consumer-stress', 'rss', '2026-04-11 11:20:00+08', 'Retail dispersion widened.', 'Retail dispersion suggests the consumer is slowing unevenly rather than broadly collapsing.', 'Consumer stress can shift recession odds.', 'neutral', 5.8, array['XLY','WMT','SPX'], array['consumer','earnings','recession']),
+  ('10101010-1010-1010-1010-101010101010', '10101010-aaaa-aaaa-aaaa-aaaaaaaaaaa2', 'Crude oil tests breakout as geopolitical premium rises', 'https://example.com/signaldemo/oil-breakout', 'youtube', '2026-04-10 07:10:00+08', 'Oil is testing breakout.', 'Oil is testing a technical breakout that could reignite inflation concern.', 'Oil breakouts can pressure rates and risk assets.', 'bullish', 7.0, array['OIL','USO','XLE'], array['oil','breakout','inflation']),
+  ('11111111-1111-1111-1111-111111111111', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaa1', 'Fed balance sheet runoff is no longer tightening at the same pace', 'https://example.com/signaldemo/fed-liquidity', 'blog', '2026-04-09 13:00:00+08', 'Runoff is slowing.', 'Slower liquidity withdrawal can reduce a macro headwind for risk assets.', 'Balance-sheet liquidity is a major risk-asset driver.', 'bullish', 8.7, array['BTC','SPX','GOLD'], array['Fed','liquidity','macro']),
+  ('99999999-9999-9999-9999-999999999999', '99999999-aaaa-aaaa-aaaa-aaaaaaaaaaa2', 'Mega-cap crowding remains the main index fragility', 'https://example.com/signaldemo/qqq-crowding', 'report', '2026-04-08 15:40:00+08', 'Mega-cap crowding persists.', 'Index returns remain vulnerable to crowding in a small number of mega-cap leaders.', 'Crowding can turn a normal pullback into a faster unwind.', 'bearish', 7.3, array['QQQ','SPY','NVDA'], array['crowding','ETF flows','market breadth'])
+on conflict (url) do update set
+  title = excluded.title,
+  source_type = excluded.source_type,
+  published_at = excluded.published_at,
+  raw_text = excluded.raw_text,
+  summary = excluded.summary,
+  why_it_matters = excluded.why_it_matters,
+  sentiment = excluded.sentiment,
+  importance_score = excluded.importance_score,
+  assets = excluded.assets,
+  themes = excluded.themes;
+
+insert into public.trade_theses
+  (id, name, category, status, horizon, conviction, assets, themes, bull_case, bear_case, catalysts, invalidation_signals, notes)
+values
+  (
+    '20000000-0000-0000-0000-000000000001',
+    'Crypto / Hyperliquid cycle',
+    'Crypto',
+    'active',
+    '6-24 months',
+    'high',
+    array['HYPE','BTC','PURR'],
+    array['liquidity','crypto','risk appetite','perps','ETF flows'],
+    'On-chain liquidity, perps volume, protocol revenue, and crypto risk appetite could compound if the cycle broadens.',
+    'The trade weakens if BTC loses cycle leadership, Hyperliquid volumes fade, or regulation hits on-chain perps.',
+    array['Hyperliquid volume and fee growth','BTC liquidity cycle confirmation','Stablecoin supply expansion','Token unlocks, incentives, or regulatory pressure','CryptoUB, Pierre, LSDinmycoffee, LomahCrypto, ColdBloodShill, and TraderMayne chart context'],
+    array['Protocol exploit or sustained volume decay','BTC cycle weakens materially','Regulatory action hits on-chain perps'],
+    'Core 6-24 month crypto trade. TA sources are tracked manually until X ingestion is added.'
+  ),
+  (
+    '20000000-0000-0000-0000-000000000002',
+    'Psychedelic therapeutics policy/catalyst trade',
+    'Biotech',
+    'building',
+    '1-3 years',
+    'medium',
+    array['DFTX','GHRS','ATAI'],
+    array['FDA','policy','clinical trials','biotech'],
+    'FDA guidance, approvals, trial readouts, or a friendlier policy environment could revive investor interest in psychedelic therapeutics.',
+    'Small-cap biotech financing risk can overwhelm good narratives if trial data or policy follow-through disappoints.',
+    array['FDA guidance or approval language','Clinical trial readouts','Trump/admin health policy comments','Institutional coverage and financing conditions'],
+    array['Failed trials or restrictive FDA guidance','Dilutive capital raises','No policy follow-through'],
+    'Needs more source discovery around FDA, trial calendars, and company-specific filings.'
+  ),
+  (
+    '20000000-0000-0000-0000-000000000003',
+    'Nuclear energy / uranium structural demand',
+    'Energy',
+    'building',
+    '1-5 years',
+    'medium',
+    array['URNM'],
+    array['uranium','AI power','energy security','utilities'],
+    'AI power demand, grid reliability, energy security, and reactor restarts can support uranium and nuclear supply-chain assets.',
+    'Policy delays, weak uranium pricing, or stalled reactor activity could turn this into dead capital.',
+    array['Utility contracting','Reactor restart approvals','Uranium spot and term price strength','AI data-center power demand'],
+    array['Policy delays','Uranium price breakdown','Nuclear project cancellations'],
+    'Good fit for weekly thesis review because catalysts are slower-moving.'
+  ),
+  (
+    '20000000-0000-0000-0000-000000000004',
+    'Gold / hard-asset hedge',
+    'Gold',
+    'active',
+    '6-24 months',
+    'medium',
+    array['AGI','Alamos Gold'],
+    array['gold','real yields','central banks','geopolitics'],
+    'Real-rate pressure, geopolitical risk, central-bank buying, and fiscal concerns can support gold and quality miners.',
+    'A real-yield spike or miner cost inflation can break the miner catch-up setup even if the macro story sounds right.',
+    array['Gold breakout confirmation','Real yields rolling over','Central-bank buying','Alamos execution and margin expansion','Santiago Capital macro/gold framework updates'],
+    array['Real yields surge','Gold fails at resistance','Miner cost inflation overwhelms gold price'],
+    'Track both bullion confirmation and Alamos-specific execution.'
+  ),
+  (
+    '20000000-0000-0000-0000-000000000005',
+    'Food commodities / supply shock',
+    'Commodities',
+    'watching',
+    '6-18 months',
+    'medium',
+    array['WEAT','WisdomTree Wheat','SUGA','WisdomTree Sugar','CORN','WisdomTree Corn'],
+    array['food inflation','war risk','fertilizer','weather','commodities'],
+    'War risk, shipping disruption, energy/fertilizer cost pressure, and weather volatility can create a food-inflation trade.',
+    'The setup fades if geopolitical risk cools, inventories normalize, or futures fail to confirm the narrative.',
+    array['Iran/Middle East escalation','Fertilizer and energy prices','Black Sea or shipping disruption','Weather-driven crop stress','Macro commentary from Santiago Capital or Campbell Ramble'],
+    array['Ceasefire or de-escalation','Inventories normalize','Wheat, sugar, and corn fail to confirm'],
+    'This is a catalyst-sensitive thesis, not a passive commodity basket.'
+  ),
+  (
+    '20000000-0000-0000-0000-000000000006',
+    'LNG / natural gas infrastructure',
+    'Energy',
+    'watching',
+    '6-24 months',
+    'low',
+    array['FCG'],
+    array['LNG','natural gas','energy security','infrastructure'],
+    'Energy security, LNG export demand, and natural gas infrastructure can benefit if global gas markets tighten.',
+    'Persistent gas oversupply or export-policy delays can keep the basket lagging.',
+    array['LNG export approvals','US natural gas price basing','European and Asian gas demand','Pipeline and infrastructure policy','Campbell Ramble cross-asset energy notes'],
+    array['Gas oversupply persists','Export policy delays','FCG components lag commodity recovery'],
+    'Lower-conviction watchlist trade until price and policy confirmation improve.'
+  )
+on conflict (id) do update set
+  name = excluded.name,
+  category = excluded.category,
+  status = excluded.status,
+  horizon = excluded.horizon,
+  conviction = excluded.conviction,
+  assets = excluded.assets,
+  themes = excluded.themes,
+  bull_case = excluded.bull_case,
+  bear_case = excluded.bear_case,
+  catalysts = excluded.catalysts,
+  invalidation_signals = excluded.invalidation_signals,
+  notes = excluded.notes;
+
+insert into public.alert_rules (id, name, keywords, assets, minimum_priority, enabled)
+values
+  ('abababab-abab-abab-abab-ababababab01', 'High-signal crypto', array['ETF', 'liquidity', 'regulation'], array['BTC', 'ETH', 'SOL'], 'medium', true),
+  ('abababab-abab-abab-abab-ababababab02', 'Macro risk watch', array['Fed', 'inflation', 'recession', 'oil'], array['DXY', 'TLT', 'SPX'], 'medium', true),
+  ('abababab-abab-abab-abab-ababababab03', 'Portfolio defensives', array['breakout', 'crash', 'credit'], array['GOLD', 'OIL', 'VIX'], 'low', false)
+on conflict (id) do update set
+  name = excluded.name,
+  keywords = excluded.keywords,
+  assets = excluded.assets,
+  minimum_priority = excluded.minimum_priority,
+  enabled = excluded.enabled;
