@@ -90,7 +90,7 @@ export const activeTradeTheses: TradeThesis[] = [
       "Real yields rolling over",
       "Central-bank buying",
       "Alamos execution and margin expansion",
-      "Santiago Capital macro/gold framework updates"
+      "Santiago Capital and Michael Every/Rabobank macro-risk updates"
     ],
     invalidationSignals: [
       "Real yields surge",
@@ -115,7 +115,7 @@ export const activeTradeTheses: TradeThesis[] = [
       "Fertilizer and energy prices",
       "Black Sea or shipping disruption",
       "Weather-driven crop stress",
-      "Macro commentary from Santiago Capital or Campbell Ramble"
+      "Macro commentary from Michael Every/Rabobank, Santiago Capital, or Campbell Ramble"
     ],
     invalidationSignals: [
       "Ceasefire or de-escalation",

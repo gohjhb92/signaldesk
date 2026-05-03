@@ -2,13 +2,13 @@ import type { Analyst, ContentItem, Source, ThemeSummary } from "@/types/domain"
 
 export const mockAnalysts: Analyst[] = [
   {
-    id: "analyst-lyn",
-    name: "Lyn Alden",
-    category: "researcher",
+    id: "analyst-michael-every",
+    name: "Michael Every",
+    category: "strategist",
     priority: "high",
-    notes: "Macro liquidity, Bitcoin, rates, and long-cycle market structure.",
-    website: "https://www.lynalden.com",
-    xHandle: "@LynAldenContact"
+    notes: "Rabobank global strategist focused on macro risk, geopolitics, trade, food/agri, FX, and commodities.",
+    website: "https://www.rabobank.nl/en/knowledge/our-experts/011085368/michael-every",
+    xHandle: ""
   },
   {
     id: "analyst-jurrien",
@@ -166,8 +166,8 @@ export const mockAnalysts: Analyst[] = [
 ];
 
 export const mockSources: Source[] = [
-  source("source-lyn-blog", "analyst-lyn", "Lyn Alden", "blog", "https://www.lynalden.com/feed/"),
-  source("source-lyn-report", "analyst-lyn", "Lyn Alden", "report", "https://example.com/lyn/reports", false),
+  source("source-rabobank-research", "analyst-michael-every", "Michael Every / RaboResearch", "report", "https://www.rabobank.com/knowledge", true),
+  source("source-michael-every-profile", "analyst-michael-every", "Michael Every / Rabobank", "blog", "https://www.rabobank.nl/en/knowledge/our-experts/011085368/michael-every", false),
   source("source-jurrien-rss", "analyst-jurrien", "Jurrien Timmer", "rss", "https://example.com/fidelity-insights/rss"),
   source("source-arthur-blog", "analyst-arthur", "Arthur Hayes", "blog", "https://cryptohayes.medium.com/feed"),
   source("source-compound-youtube", "analyst-compound", "The Compound", "youtube", "https://www.youtube.com/feeds/videos.xml?channel_id=UCY2ifv8iH1Dsgjrz-h3lWLQ"),
@@ -192,7 +192,7 @@ export const mockSources: Source[] = [
 ];
 
 const itemSeed = [
-  ["liquidity-btc", "Global liquidity impulse is turning constructive for scarce assets", "Lyn Alden Blog", "blog", "Lyn Alden", "high", "Today, 08:40", "2026-05-02T08:40:00+08:00", "Improving dollar liquidity and easing financial stress could support Bitcoin and gold while equity upside depends on earnings breadth.", ["liquidity", "macro", "risk appetite"], ["BTC", "GOLD", "SPX"], "bullish", 92],
+  ["macro-statecraft", "Geopolitical statecraft is becoming a market driver again", "RaboResearch Global Daily", "report", "Michael Every", "high", "Today, 08:40", "2026-05-02T08:40:00+08:00", "Trade policy, tariffs, food security, and strategic competition are moving from background risk to direct market drivers for commodities, FX, and risk assets.", ["geopolitics", "macro risk", "trade policy"], ["DXY", "GOLD", "OIL", "WEAT"], "mixed", 92],
   ["rates-duration", "Duration risk remains the pressure point for broad equity beta", "Fidelity Viewpoints", "rss", "Jurrien Timmer", "medium", "Yesterday, 17:15", "2026-05-01T17:15:00+08:00", "Multiples remain sensitive to real yields, but market internals are healthier than the headline index implies.", ["rates", "equities", "valuation"], ["QQQ", "SPY", "TLT"], "mixed", 78],
   ["crypto-leverage", "Crypto positioning is improving, but leverage is still clustered", "CryptoHayes", "blog", "Arthur Hayes", "high", "Apr 30, 21:05", "2026-04-30T21:05:00+08:00", "Crypto upside is framed as a liquidity trade with near-term risk from crowded perpetual futures positioning.", ["crypto", "leverage", "positioning"], ["BTC", "ETH", "SOL"], "bullish", 88],
   ["oil-dollar", "Oil volatility is feeding back into inflation expectations", "Macro Notes Podcast", "podcast", "Kobeissi Letter", "high", "Apr 29, 09:20", "2026-04-29T09:20:00+08:00", "Crude volatility may push inflation expectations higher and complicate the timing of policy easing.", ["commodities", "inflation", "central banks"], ["USO", "DXY", "TLT"], "bearish", 83],
@@ -207,7 +207,7 @@ const itemSeed = [
   ["qqq-levels", "QQQ holds key support despite higher rate volatility", "Koyfin Research", "substack", "Koyfin Research", "low", "Apr 24, 15:30", "2026-04-24T15:30:00+08:00", "Large-cap tech remains technically resilient, but leadership is concentrated.", ["technical levels", "rates", "market breadth"], ["QQQ", "NVDA", "MSFT"], "mixed", 59],
   ["oil-supply", "Oil supply risk returns as inventories tighten", "Kobeissi Letter", "rss", "Kobeissi Letter", "high", "Apr 24, 09:35", "2026-04-24T09:35:00+08:00", "Inventory draws and geopolitical risk are lifting the oil risk premium.", ["oil", "inflation", "geopolitics"], ["OIL", "USO", "XLE"], "bearish", 82],
   ["btc-range", "Bitcoin remains range-bound while volatility compresses", "Preston Pysh", "podcast", "Preston Pysh", "medium", "Apr 23, 18:10", "2026-04-23T18:10:00+08:00", "BTC volatility compression suggests a larger move is building, but direction remains unresolved.", ["volatility", "breakout", "crypto"], ["BTC", "IBIT"], "mixed", 68],
-  ["bank-credit", "Bank credit growth is no longer a clear headwind", "Lyn Alden Blog", "blog", "Lyn Alden", "high", "Apr 22, 13:50", "2026-04-22T13:50:00+08:00", "Credit growth stabilization supports the soft-landing narrative and risk assets.", ["credit", "liquidity", "soft landing"], ["SPX", "BTC", "HYG"], "bullish", 84],
+  ["food-security", "Food security is returning as a geopolitical risk premium", "RaboResearch Global Daily", "report", "Michael Every", "high", "Apr 22, 13:50", "2026-04-22T13:50:00+08:00", "Shipping lanes, fertilizer inputs, energy costs, and state-level trade policy can keep food commodities sensitive to geopolitical shocks.", ["food inflation", "geopolitics", "commodities"], ["WEAT", "CORN", "SUGA", "OIL"], "bullish", 84],
   ["earnings-revisions", "Earnings revisions broaden outside mega-cap tech", "Schwab Market Notes", "rss", "Liz Ann Sonders", "medium", "Apr 21, 10:10", "2026-04-21T10:10:00+08:00", "Broader earnings revisions would make the equity rally less fragile.", ["earnings", "market breadth", "equities"], ["SPX", "IWM", "QQQ"], "bullish", 74],
   ["dxy-pressure", "Dollar strength is pressuring commodities and EM risk", "Koyfin Research", "substack", "Koyfin Research", "low", "Apr 20, 12:00", "2026-04-20T12:00:00+08:00", "A firm dollar is tightening conditions for commodities and emerging market assets.", ["DXY", "macro", "risk appetite"], ["DXY", "GOLD", "EEM"], "bearish", 63],
   ["sol-activity", "Solana activity rebounds but fee quality is uneven", "CryptoHayes", "blog", "Arthur Hayes", "high", "Apr 19, 20:45", "2026-04-19T20:45:00+08:00", "SOL activity is rebounding, though the quality and durability of fee growth remain debated.", ["crypto", "fees", "risk appetite"], ["SOL", "ETH"], "mixed", 79],
@@ -220,7 +220,7 @@ const itemSeed = [
   ["btc-miners", "Bitcoin miners face margin pressure after hashprice reset", "Preston Pysh", "podcast", "Preston Pysh", "medium", "Apr 12, 19:45", "2026-04-12T19:45:00+08:00", "Miner economics are tightening, which may affect forced selling and equity beta.", ["crypto", "miners", "hashprice"], ["BTC", "MARA", "RIOT"], "mixed", 65],
   ["consumer-stress", "Consumer stress is showing up in lower-end retail", "Schwab Market Notes", "rss", "Liz Ann Sonders", "medium", "Apr 11, 11:20", "2026-04-11T11:20:00+08:00", "Retail dispersion suggests the consumer is slowing unevenly rather than broadly collapsing.", ["consumer", "earnings", "recession"], ["XLY", "WMT", "SPX"], "neutral", 58],
   ["oil-breakout", "Crude oil tests breakout as geopolitical premium rises", "Metals Desk", "youtube", "Metals Desk", "low", "Apr 10, 07:10", "2026-04-10T07:10:00+08:00", "Oil is testing a technical breakout that could reignite inflation concern.", ["oil", "breakout", "inflation"], ["OIL", "USO", "XLE"], "bullish", 70],
-  ["fed-liquidity", "Fed balance sheet runoff is no longer tightening at the same pace", "Lyn Alden Blog", "blog", "Lyn Alden", "high", "Apr 09, 13:00", "2026-04-09T13:00:00+08:00", "Slower liquidity withdrawal can reduce a macro headwind for risk assets.", ["Fed", "liquidity", "macro"], ["BTC", "SPX", "GOLD"], "bullish", 87],
+  ["gold-geopolitics", "Gold remains a hedge against policy and geopolitical disorder", "RaboResearch Global Daily", "report", "Michael Every", "high", "Apr 09, 13:00", "2026-04-09T13:00:00+08:00", "A more fragmented global trade and security backdrop can keep hard assets relevant even when rate expectations are noisy.", ["gold", "geopolitics", "macro risk"], ["GOLD", "AGI", "DXY"], "bullish", 87],
   ["qqq-crowding", "Mega-cap crowding remains the main index fragility", "ETF Institute", "report", "ETF Institute", "medium", "Apr 08, 15:40", "2026-04-08T15:40:00+08:00", "Index returns remain vulnerable to crowding in a small number of mega-cap leaders.", ["crowding", "ETF flows", "market breadth"], ["QQQ", "SPY", "NVDA"], "bearish", 73]
 ] as const;
 
